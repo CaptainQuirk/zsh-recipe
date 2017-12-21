@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# depends nerd-fonts
+
+CONFIG_SRC_DIR=~/Documents/configuration/src
+POWERLINE_BINDINGS="/home/linuxbrew/.linuxbrew/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh"
+
+if ! command -v zsh &> /dev/null; then
+    sudo apt-get install zsh
+fi
+
+if [ ! -d ~/.zplug ]; then
+    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+fi
+
+brew install python3
+pip3 install powerline-status
+
+if [ ! -f ~/.zsh-powerline ]; then
+   echo "POWERLINE_PATH=$POWERLINE_BINDINGS" > ~/.zsh-powerline
+   chmod +x $POWERLINE_BINDINGS
+fi
+
+if [ ! -d $CONFIG_SRC_DIR/.zsh ]; then
+    git clone https://github.com/CaptainQuirk/.zsh.git $CONFIG_SRC_DIR/.zsh
+    cd $CONFIG_SRC_DIR/.zsh
+    git submodule update --init --recursive
+    ln -s -f $CONFIG_SRC_DIR/.zsh/zshrc ~/.zshrc
+    cd -
+fi
+
+
+cd $CONFIG_SRC_DIR/.zsh
+git pull
+
+cd -
+
+if [ "$SHELL" == "/bin/bash" ]; then
+    chsh -s $(which zsh)
+fi
