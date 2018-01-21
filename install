@@ -16,6 +16,7 @@ fi
 brew install python3
 pip3 install powerline-status
 
+# TODO prompt the user to create the file
 if [ ! -f ~/.zsh-powerline ]; then
    echo "POWERLINE_PATH=$POWERLINE_BINDINGS" > ~/.zsh-powerline
    chmod +x $POWERLINE_BINDINGS
@@ -35,6 +36,7 @@ git pull
 
 cd -
 
+# TODO call a function and register for reboot
 if [ "$SHELL" == "/bin/bash" ]; then
     chsh -s $(which zsh)
 fi
