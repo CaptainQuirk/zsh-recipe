@@ -6,14 +6,14 @@ CONFIG_SRC_DIR=~/Documents/configuration/src
 POWERLINE_BINDINGS="/home/linuxbrew/.linuxbrew/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh"
 
 if ! command -v zsh &> /dev/null; then
-    sudo apt-get install zsh
+    shef apt zsh
 fi
 
 if [ ! -d ~/.zplug ]; then
     curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 fi
 
-brew install python3
+shef brew python3
 pip3 install powerline-status
 
 if [ ! -f ~/.zsh-powerline ]; then
@@ -23,18 +23,18 @@ fi
 
 if [ ! -d $CONFIG_SRC_DIR/.zsh ]; then
     git clone https://github.com/CaptainQuirk/.zsh.git $CONFIG_SRC_DIR/.zsh
-    cd $CONFIG_SRC_DIR/.zsh
+    cd $CONFIG_SRC_DIR/.zsh || exit 1
     git submodule update --init --recursive
     ln -s -f $CONFIG_SRC_DIR/.zsh/zshrc ~/.zshrc
-    cd -
+    cd - || exit 1
 fi
 
 
-cd $CONFIG_SRC_DIR/.zsh
+cd $CONFIG_SRC_DIR/.zsh || exit 1
 git pull
 
-cd -
+cd - || exit 1
 
 if [ "$SHELL" == "/bin/bash" ]; then
-    chsh -s $(which zsh)
+    chsh -s "$(which zsh)"
 fi
