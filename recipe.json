@@ -1,4 +1,4 @@
 {
-  "name": "hillaryklingon/zsh-recipe",
+  "name": "captainquirk/zsh-recipe",
   "description": "Installs zsh with powerline, zplug plugins and sets it as default shell"
 }
