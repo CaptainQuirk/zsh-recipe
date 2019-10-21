@@ -1,0 +1,38 @@
+schemaVersion: 2.0.0
+commandTests:
+  - name: 'Installs zsh'
+    command: which
+    args: ['zsh']
+  - name: 'Installs python3'
+    command: which
+    args: ['python3']
+  - name: 'Installs powerline status'
+    command: pip3
+    args: ['list']
+    expectedOutput: ['powerline-status 2.7']
+fileExistenceTests:
+  - name: 'Installs zplug'
+    path: /home/linuxbrew/.zplug
+    shouldExist: true
+  - name: 'Create a .zsh-powerline file'
+    path: /home/linuxbrew/.zsh-powerline
+    shouldExist: true
+  - name: 'Make powerline bindings executable'
+    path: '/home/linuxbrew/.linuxbrew/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh'
+    isExecutableBy: 'any'
+  - name: 'Gets our zsh configuration'
+    path: /home/linuxbrew/.cache/shef/.zsh
+    shouldExist: true
+  - name: 'Links the configuration file'
+    path: /home/linuxbrew/.zshrc
+    permissions: 'Lrwxrwxrwx'
+    shouldExist: true
+fileContentTests:
+  - name: "Sets the default shell to zsh"
+    path: "/etc/passwd"
+    expectedContents: ['.*/home/linuxbrew:/usr/bin/zsh.*']
+metadataTest:
+  cmd: ["/usr/bin/zsh"]
+
+
+

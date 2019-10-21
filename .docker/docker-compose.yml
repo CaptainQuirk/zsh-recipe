@@ -1,0 +1,9 @@
+version: '3'
+services:
+  zsh-recipe:
+    image: registry.gitlab.com/leonardmessier/shef/recipes/zsh-recipe:1.0.0
+    build:
+      context: ../
+      dockerfile: .docker/Dockerfile
+      args:
+        - USERNAME=${USERNAME}

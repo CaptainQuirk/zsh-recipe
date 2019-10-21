@@ -2,8 +2,8 @@
 
 # depends nerd-fonts
 
-CONFIG_SRC_DIR=~/Documents/configuration/src
-POWERLINE_BINDINGS="/home/linuxbrew/.linuxbrew/lib/python3.6/site-packages/powerline/bindings/zsh/powerline.zsh"
+CONFIG_SRC_DIR=~/.cache/shef
+POWERLINE_BINDINGS="/home/linuxbrew/.linuxbrew/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh"
 
 if ! command -v zsh &> /dev/null; then
     shef apt zsh
@@ -38,5 +38,5 @@ cd - || exit 1
 
 # TODO call a function and register for reboot
 if [ "$SHELL" == "/bin/bash" ]; then
-    chsh -s "$(which zsh)"
+    sudo chsh linuxbrew -s "$(which zsh)"
 fi
