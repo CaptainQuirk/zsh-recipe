@@ -38,5 +38,5 @@ cd - || exit 1
 
 # TODO call a function and register for reboot
 if [ "$SHELL" == "/bin/bash" ]; then
-    sudo chsh linuxbrew -s "$(which zsh)"
+    sudo chsh "$USER" -s "$(which zsh)"
 fi
