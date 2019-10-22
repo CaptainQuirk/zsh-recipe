@@ -25,7 +25,7 @@ done
 git "Download our zsh configuration"; do
     repository "https://github.com/CaptainQuirk/.zsh.git"
     destination "$CONFIG_SRC_DIR/.zsh"
-    enable_submodules true
+    enable-submodules true
 done
 
 link "Symlinking zshrc file"; do
