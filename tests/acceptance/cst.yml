@@ -21,7 +21,7 @@ fileExistenceTests:
     path: '/home/linuxbrew/.linuxbrew/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh'
     isExecutableBy: 'any'
   - name: 'Gets our zsh configuration'
-    path: /home/linuxbrew/.cache/shef/.zsh
+    path: /home/linuxbrew/.config/shef/configuration/.zsh
     shouldExist: true
   - name: 'Links the configuration file'
     path: /home/linuxbrew/.zshrc
