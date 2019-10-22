@@ -6,8 +6,10 @@ export
 # Check if container-structure-test is present
 CONTAINER_TEST := $(shell command -v container-structure-test 2>/dev/null)
 
+build:
+	@shef build install.recipe build/install
 install:
-	@/bin/bash install
+	@/bin/bash build/install
 
 build-docker:
 	@docker-compose build zsh-recipe
@@ -23,4 +25,4 @@ endif
 	@echo "\033[32m✓\033[0m Acceptance tests passed"
 
 
-.PHONY: install
+.PHONY: build install
