@@ -1,0 +1,39 @@
+apt zsh
+
+git "Download zplug"; do
+    repository "https://github.com/zplug/zplug"
+    destination "$HOME/.zplug"
+done
+
+code "Install zplug"; do
+    cwd "$HOME/.zplug"
+    code "/usr/bin/zsh init.zsh"
+done
+
+brew python3
+pip powerline-status
+
+create-file "Create .zsh-powerline file"; do
+    path "$HOME/.zsh-powerline"
+    content "POWERLINE_PATH=/home/linuxbrew/.linuxbrew/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh"
+done
+
+code "Make powerline bindings executable"; do
+    code "chmod +x /home/linuxbrew/.linuxbrew/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh"
+done
+
+git "Download our zsh configuration"; do
+    repository "https://github.com/CaptainQuirk/.zsh.git"
+    destination "$CONFIG_SRC_DIR/.zsh"
+    enable_submodules true
+done
+
+link "Symlinking zshrc file"; do
+    target "$CONFIG_SRC_DIR/.zsh/zshrc"
+    to "$HOME/.zshrc"
+done
+
+code "Setting zsh to default shell"; do
+    code "chsh $USER -s /usr/bin/zsh"
+    sudo true
+done
