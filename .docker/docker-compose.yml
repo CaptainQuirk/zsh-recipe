@@ -7,3 +7,9 @@ services:
       dockerfile: .docker/Dockerfile
       args:
         - USERNAME=${USERNAME}
+  zsh-recipe-x11:
+    image: registry.gitlab.com/leonardmessier/shef/recipes/zsh-recipe-x11:1.0.0
+    build:
+      context: ../
+      dockerfile: .docker/Dockerfile.x11
+
