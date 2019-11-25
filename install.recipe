@@ -22,6 +22,11 @@ code "Make powerline bindings executable"; do
     code "chmod +x /home/linuxbrew/.linuxbrew/lib/python3.7/site-packages/powerline/bindings/zsh/powerline.zsh"
 done
 
+directory "Create a directory to hold runtime zsh configuration"; do
+    path "$HOME/.zsh-runtime/shef"
+    parents true
+done
+
 git "Download our zsh configuration"; do
     repository "https://github.com/CaptainQuirk/.zsh.git"
     destination "$CONFIG_SRC_DIR/.zsh"

@@ -14,7 +14,7 @@ install:
 build-docker:
 	@docker-compose build zsh-recipe
 
-test: test-acceptance
+test: build-docker test-acceptance
 test-acceptance:
 ifndef CONTAINER_TEST
 	@echo "container-structure-test is not available. Follow instructions here : https://github.com/GoogleContainerTools/container-structure-test"

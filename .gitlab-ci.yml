@@ -16,5 +16,4 @@ Build And Test:
   variables:
     SHEF_VERSION: "1.0.0"
   script:
-    - make build-docker
     - make test

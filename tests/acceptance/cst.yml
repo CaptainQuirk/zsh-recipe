@@ -27,6 +27,9 @@ fileExistenceTests:
     path: /home/linuxbrew/.zshrc
     permissions: 'Lrwxrwxrwx'
     shouldExist: true
+  - name: 'Creates a workstation config directory'
+    path: /home/linuxbrew/.zsh-runtime/shef
+    shouldExist: true
 fileContentTests:
   - name: "Sets the default shell to zsh"
     path: "/etc/passwd"
